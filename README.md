@@ -5,7 +5,6 @@ This project is a retrieval-augmented generation (RAG) application that uses Str
 ## Features
 
 - **Fast Inference:** Utilizes the Groq API for near real-time responses from the Llama3 language model.
-- **Document Q&A:** Ask questions about the content of a PDF document (`esp32_datasheet_en.pdf` is used as an example).
 - **Local Embeddings:** Uses Ollama with `nomic-embed-text` to generate embeddings locally.
 - **Vector Store:** Employs FAISS for efficient similarity searches on document embeddings.
 - **Web Interface:** A simple and interactive web interface built with Streamlit.
