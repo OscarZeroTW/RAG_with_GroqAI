@@ -90,7 +90,7 @@ Place the PDF files you want to query in the `docs` directory. The application w
 ├── .gitignore
 ├── app.py            # Main Streamlit application
 ├── docs/             # Directory for your PDF documents
-│   └── example.pdf
+│   └── .gitignore
 ├── README.md
 └── requirements.txt  # Python dependencies
 ```
