@@ -12,8 +12,8 @@ This project is a retrieval-augmented generation (RAG) application that uses Str
 
 ## How it Works
 
-1.  **Document Loading:** The application loads a PDF document using `PyPDFLoader`.
-2.  **Text Splitting:** The document is split into smaller chunks using `RecursiveCharacterTextSplitter`.
+1.  **Document Loading:** The application loads all PDF documents from the `docs` directory using `PyPDFLoader`.
+2.  **Text Splitting:** The documents are split into smaller chunks using `RecursiveCharacterTextSplitter`.
 3.  **Embedding:** The text chunks are converted into vector embeddings using a local Ollama model.
 4.  **Vector Storage:** The embeddings are stored in a FAISS vector store for quick retrieval.
 5.  **User Query:** The user enters a question through the Streamlit interface.
@@ -66,7 +66,7 @@ ollama pull nomic-embed-text
 
 ### 5. Prepare your document
 
-Place the PDF file you want to query in a `docs` directory. The code is currently set to use `./docs/esp32_datasheet_en.pdf`.
+Place the PDF files you want to query in the `docs` directory. The application will process all `.pdf` files found in this directory.
 
 ## Usage
 
@@ -89,8 +89,8 @@ Place the PDF file you want to query in a `docs` directory. The code is currentl
 ├── .env              # Environment variables
 ├── .gitignore
 ├── app.py            # Main Streamlit application
-├── docs/
-│   └── esp32_datasheet_en.pdf  # Example PDF document
+├── docs/             # Directory for your PDF documents
+│   └── example.pdf
 ├── README.md
 └── requirements.txt  # Python dependencies
 ```

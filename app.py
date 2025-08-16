@@ -39,8 +39,21 @@ prompt = ChatPromptTemplate.from_template(
 def vector_embedding():
     if "vectors" not in st.session_state:
         st.session_state.embeddings = OllamaEmbeddings(model="nomic-embed-text", base_url=ollama_base_url)
-        st.session_state.loader = PyPDFLoader("./docs/esp32_datasheet_en.pdf")  # Data Ingestion
-        st.session_state.docs = st.session_state.loader.load()  # Document Loading
+        
+        # Get all PDF file paths from the docs directory
+        pdf_files = [os.path.join("./docs", f) for f in os.listdir("./docs") if f.endswith('.pdf')]
+        
+        if not pdf_files:
+            st.warning("No PDF files found in the 'docs' directory.")
+            return
+
+        # Load all PDF documents
+        all_docs = []
+        for pdf_file in pdf_files:
+            loader = PyPDFLoader(pdf_file)
+            all_docs.extend(loader.load())
+
+        st.session_state.docs = all_docs
         st.session_state.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,
                                                                         chunk_overlap=200)  # Chunk Creation
         st.session_state.final_documents = st.session_state.text_splitter.split_documents(
